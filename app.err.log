@@ -1,3 +1,0 @@
-nohup: failed to run command './watch.sh': No such file or directory
-kill: sending signal to 138042 failed: No such process
-kill: not enough arguments

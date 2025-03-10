@@ -1,9 +1,0 @@
-nohup: failed to run command './watch.sh': No such file or directory
-new file detected, start uploading /App/aii_school_prod/storage/app/dd
-sending /App/aii_school_prod/storage/app/dd to server 192.168.100.223
-sending incremental file list
-dd
-              0 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=0/1)
-
-sent 102 bytes  received 35 bytes  91.33 bytes/sec
-total size is 0  speedup is 0.00
