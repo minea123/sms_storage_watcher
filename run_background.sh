@@ -1,3 +1,3 @@
 cd $PWD
 sudo ./kill.sh
-sudo nohup ./watch_sms_storage.sh >> app.log 2>> app.err.log &
+sudo nohup /bin/bash ./watch_sms_storage.sh >> app.log 2>> app.err.log &
