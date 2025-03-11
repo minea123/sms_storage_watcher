@@ -14,5 +14,5 @@ for server in $(cat $SERVER_LIST); do
 
 
     # scp to other dir
-    rsync -avvv --log-file=transfer.log --ignore-existing $FILE_PATH $SSH_SERVER:$FILE_PATH
+    rsync -av --ignore-existing $FILE_PATH $SSH_SERVER:$FILE_PATH
 done
