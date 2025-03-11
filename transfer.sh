@@ -13,7 +13,9 @@ for server in $(cat $SERVER_LIST); do
     # check if file dir exists, if not auto create recursive?
     ssh $SSH_SERVER "[ -d $DIR ] || sudo -u www-data mkdir -p $DIR"
 
-
-    # scp to other dir
-    rsync -av --ignore-existing $FILE_PATH $SSH_SERVER:$FILE_PATH
+    if [[ "$EVENT_TYPE" = "MODIFY" ]]; then
+        rsync -av --update $FILE_PATH $SSH_SERVER:$FILE_PATH
+    else
+        rsync -av --ignore-existing $FILE_PATH $SSH_SERVER:$FILE_PATH
+    fi    
 done
