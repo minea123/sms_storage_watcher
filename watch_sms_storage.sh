@@ -4,6 +4,6 @@ inotifywait -m -r "$TARGET" -e create -e modify --exclude '(^|/)((\.)|(mpdf(/|$)
     # is event is file, not dir
     if [[ "$event" != *"ISDIR"* ]]; then
         file_path="$path$file"
-        sh ./transfer.sh $file_path
+        sh ./transfer.sh $file_path $event
     fi
 done
