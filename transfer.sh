@@ -2,6 +2,14 @@
 FILE_PATH=$1
 EVENT_TYPE=$2
 SERVER_LIST="servers.list"
+
+# check if file from symblic dir
+# replace to original dir
+#if [[ "$FILE_PATH" =~ "/public/storage" ]]; then
+#    FILE_PATH=${FILE_PATH//\/public\/storage/\/storage\/app}
+#    echo "NEW_PATH: $FILE_PATH"
+#fi
+
 DIR=$(dirname $FILE_PATH)
 
 echo "new file detected $EVENT_TYPE, start uploading $FILE_PATH";
