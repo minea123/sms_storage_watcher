@@ -21,6 +21,6 @@ find "/App/aii_school_prod/storage/app" -type d -exec chown -R www-data:www-data
 
 while IFS= read -r path; do
     # Skip empty lines
-    echo "Watching $WATCH_DIR"
+    echo "Watching $path"
     sudo nohup /bin/bash ./watch_dir_event.sh $path &
 done < "./watch.tmp"
