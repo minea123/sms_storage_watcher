@@ -17,8 +17,7 @@ while IFS= read -r path; do
     echo $path >> watch.tmp
 done < "./base_dir"
 
-sudo chown www-data:www-data -R /App/aii_school_prod/storage/app
-sudo chmod 777 -R /App/aii_school_prod/storage/app
+find "/App/aii_school_prod/storage/app" -type d -exec chown -R www-data:www-data {} \; -exec chmod 777 -R {} \;
 
 while IFS= read -r path; do
     # Skip empty lines
