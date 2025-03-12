@@ -1,4 +1,4 @@
-PUBLIC_DIR=/home/mjqedu/Code/aii_school_prod/public/storage
+PUBLIC_DIR=/App/aii_school_prod/public/storage
 
 
 inotifywait -m "$PUBLIC_DIR" -r -e create -e modify --exclude '(^|/)((\.)|(mpdf(/|$)))' | while read -r path event file; do
