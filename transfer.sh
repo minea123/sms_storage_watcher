@@ -12,10 +12,8 @@ SERVER_LIST="servers.list"
 
 DIR=$(dirname $FILE_PATH)
 
-echo "new file detected $EVENT_TYPE, start uploading $FILE_PATH";
-
 for server in $(cat $SERVER_LIST); do
-    echo "sending $FILE_PATH to server $server"
+    echo "$(date "+%Y-%m-%d %H:%M:%S"): New file detected $EVENT_TYPE, start uploading to server $server $FILE_PATH";
     SSH_SERVER=root@$server
 
     # check if file dir exists, if not auto create recursive?

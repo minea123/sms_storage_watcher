@@ -1,6 +1,6 @@
-sudo rm watch.tmp
 WATCH_PATH=/App/aii_school_prod/storage/app
 CURRENT_DATE=$(date +"%Y/%m/%d")
+WACH_LIST=""
 
 while IFS= read -r path; do
     # Skip empty lines
@@ -14,13 +14,15 @@ while IFS= read -r path; do
     fi
     # Add your action here
 
-    echo $path >> watch.tmp
+    WATCH_LIST+=" $path"
 done < "./base_dir"
 
 find "/App/aii_school_prod/storage/app" -type d -exec chown -R www-data:www-data {} \; -exec chmod 777 -R {} \;
 
-while IFS= read -r path; do
-    # Skip empty lines
-    echo "Watching $path"
-    sudo nohup /bin/bash ./watch_dir_event.sh $path &
-done < "./watch.tmp"
+inotifywait $WATCH_LIST -m -r -e create -e modify --exclude '(^|/)((\.)|(mpdf(/|$)))' | while read -r path event file; do
+    # is event is file, not dir
+    if [[ "$event" != *"ISDIR"* ]]; then
+        file_path="$path$file"
+        sudo /bin/bash ./transfer.sh $file_path $event
+    fi
+done
